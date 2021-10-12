@@ -1,0 +1,6 @@
+07/10/2021
+1. Find largest and smallest element of a word array A which has 10 elements.
+
+2. Sum the elements of a word array A having 5 elements and display the result to the user.
+
+3. Sum the even numbers and odd numbers in a word array A and display the result to the user
