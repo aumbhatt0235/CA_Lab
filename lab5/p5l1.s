@@ -44,13 +44,15 @@ find:	la $a1, array		# Base Addr. of array
 	lw $s1, 0($a1)		# $s1 = Smallest
 
 	addi $t0, $zero, 1	# Outer Count = 1
+	addi $s5, $a1, 0
 
-outer:	slti $t2, $t0, 0
+
+outer:	slti $t2, $t0, 1
 	bne $t2, $zero, exOuter
 
 	addi $t1, $zero, 10	# Inner Count = 1
 
-	lw $a0, 0($a1)
+	lw $a0, ($s5)
 	li $v0, 1
 	syscall
 
@@ -60,7 +62,7 @@ outer:	slti $t2, $t0, 0
 
 	add $s4, $zero, $a1
 
-inner:	slti $t2, $t1, 0
+inner:	slti $t2, $t1, 1
 	bne $t2, $zero, exInner
 
 	lw $s3, 0($s4)
@@ -83,7 +85,7 @@ inner:	slti $t2, $t1, 0
 		j inner
 
 	exInner:addi $t0, $t0, -1
-		addi $a1, $a1, 4
+		addi $s5, $s5, 4
 		j outer
 
 exOuter:jr $ra
